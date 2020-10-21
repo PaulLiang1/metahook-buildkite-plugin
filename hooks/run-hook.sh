@@ -9,6 +9,8 @@ if grep -q "${var_name}" <"${BUILDKITE_METAHOOK_HOOKS_PATH}/vars"; then
   hook_file="${BUILDKITE_METAHOOK_HOOKS_PATH}/${hook_name}"
 
   echo "#\!/usr/bin/env bash" >"${hook_file}"
+  echo "set -ex" >>"${hook_file}"
+
   echo "set -o errexit" >>"${hook_file}"
   echo "set -o nounset" >>"${hook_file}"
   echo "set -o pipefail" >>"${hook_file}"
@@ -18,3 +20,5 @@ if grep -q "${var_name}" <"${BUILDKITE_METAHOOK_HOOKS_PATH}/vars"; then
   chmod +x "${hook_file}"
   source "${hook_file}"
 fi
+
+env
