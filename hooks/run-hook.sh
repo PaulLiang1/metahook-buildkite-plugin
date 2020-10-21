@@ -16,5 +16,5 @@ if grep -q "${var_name}" <"${BUILDKITE_METAHOOK_HOOKS_PATH}/vars"; then
   # That is, use the var_name string to look up the value.
   echo "${!var_name}" >>"${hook_file}"
   chmod +x "${hook_file}"
-  exec "${hook_file}"
+  source "${hook_file}"
 fi
