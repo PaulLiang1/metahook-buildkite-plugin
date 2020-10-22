@@ -20,5 +20,3 @@ if grep -q "${var_name}" <"${BUILDKITE_METAHOOK_HOOKS_PATH}/vars"; then
   chmod +x "${hook_file}"
   source "${hook_file}"
 fi
-
-env
